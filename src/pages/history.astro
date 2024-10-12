@@ -4,29 +4,20 @@ import { db, History as AstroHistory } from "astro:db";
 const history = await db.select().from(AstroHistory);
 ---
 
-<h2>History</h2>
-
-{
-    history.map(({image_identifier, generated_history, username, stamp}) => (
-        <article>
-            <div>{username}</div>
-            <div>{stamp}</div>
-            <div>{image_identifier}</div>
-            <div>{generated_history}</div>
-        </article>
-    ))
-}
-
-<style>
-    * {
-        font-family: sans-serif;
+<div class="h-screen w-full bg-slate-100 p-2">
+    <h2 class="text-center text-3xl">History</h2>
+    {
+        history.map(({image_identifier, generated_history, username, stamp}) => (
+            <article class="bg-white p-2 m-2 shadow rounded-lg border flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <div class="font-semibold uppercase">{username}</div>
+                    <div>{stamp}</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <div class="bg-slate-100 p-2 rounded-lg w-full min-h-[200px]">{image_identifier}</div>
+                    <div class="w-full bg-slate-800 text-slate-300 p-2 rounded-lg min-h-[200px] truncate">{generated_history}</div>
+                </div>
+            </article>
+        ))
     }
-    
-    article {
-        background-color: #c3c3c3;
-        padding: 1rem;
-        margin: 1rem;
-        border-radius: .5rem;
-        border: 1px solid #c3c3c3;
-    }
-</style>
+</div>
