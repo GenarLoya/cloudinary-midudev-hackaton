@@ -1,0 +1,32 @@
+---
+import { db, History as AstroHistory } from "astro:db";
+
+const history = await db.select().from(AstroHistory);
+---
+
+<h2>History</h2>
+
+{
+    history.map(({image_identifier, generated_history, username, stamp}) => (
+        <article>
+            <div>{username}</div>
+            <div>{stamp}</div>
+            <div>{image_identifier}</div>
+            <div>{generated_history}</div>
+        </article>
+    ))
+}
+
+<style>
+    * {
+        font-family: sans-serif;
+    }
+    
+    article {
+        background-color: #c3c3c3;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: .5rem;
+        border: 1px solid #c3c3c3;
+    }
+</style>
