@@ -1,0 +1,18 @@
+---
+await fetch(new URL('/api/history.json', Astro.url), {
+    method: 'POST',
+    body: JSON.stringify({
+        username: 'test-username',
+        image_identifier: 'cld-sample-5',
+        generated_history: 'This is a test generated history',
+        stamp: new Date()
+    })
+});
+---
+
+<div class="bg-slate-100 p-2 flex flex-col gap-2 w-full h-screen">
+    <h1>Create history</h1>
+    
+    <p>This call the endpoint /api/history.json when you enter in the page</p>
+    <a href="/history" class="bg-blue-600 text-white font-semibold p-3 rounded-lg shadow w-1/3">Return</a>
+</div>
