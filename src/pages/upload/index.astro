@@ -1,0 +1,94 @@
+---
+import { CldUploadWidget, CldImage } from "astro-cloudinary";
+
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+const images = await getCollection("images");
+---
+
+<Layout title="Cloudinary Hackathon">
+  <h1 color="brand">Hackathon Cloudinary</h1>
+  <CldUploadWidget
+    id="upload-widget"
+    uploadPreset="astro-upload-preset"
+    options={{
+      sources: ["local"],
+      multiple: false,
+      maxFiles: 1,
+      language: "es",
+      text: {
+        es: {
+          or: "O",
+
+          menu: {
+            files: "Subir desde tu dispositivo",
+          },
+          local: {
+            browse: "Seleccionar",
+            dd_title_single: "Arrastra tu imagen aquí",
+          },
+        },
+      },
+    }}
+  >
+    <button>Upload</button>
+  </CldUploadWidget>
+  <ul>
+    {
+      images.map((image: any) => {
+        return (
+          <li>
+            <a href={`/photo?id=${image.data.public_id}`}>
+              <CldImage
+                src={image.data.public_id}
+                width={250}
+                height={250}
+                crop={{
+                  type: "fill",
+                  source: true,
+                }}
+              />
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <script>
+    import { navigate } from "astro:transitions/client";
+
+    const widget = document.getElementById("upload-widget");
+
+    if (widget) {
+      widget.addEventListener("clduploadwidget:success", ((
+        e: CustomEvent<{ info: { public_id: string } }>
+      ) => {
+        const publicId = e.detail.info.public_id;
+        navigate(`/upload/${publicId}`);
+      }) as EventListener);
+    }
+  </script>
+
+  <style>
+    main {
+      width: 800px;
+      margin: 0 auto;
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 32px;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      list-style: none;
+    }
+  </style>
+
+  <script></script>
+</Layout>

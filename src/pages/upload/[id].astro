@@ -1,0 +1,11 @@
+---
+import ImagesCompare from "../../components/ImagesCompare.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const { id } = Astro.params as { id: string };
+---
+
+<Layout title="Your image has been proceseed">
+  <ImagesCompare id={id}>
+  </ImagesCompare>
+</Layout>
