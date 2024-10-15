@@ -7,6 +7,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [db(), tailwind()],
+  integrations: [db(), tailwind({
+    applyBaseStyles: false
+  })],
   output: 'server'
 });
