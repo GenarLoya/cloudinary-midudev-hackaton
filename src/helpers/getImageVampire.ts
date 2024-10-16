@@ -17,6 +17,7 @@ export default function getImageVampire(id: string): {
     src: id,
   });
 
+
   return {
     transformedUrl,
     originalUrl,

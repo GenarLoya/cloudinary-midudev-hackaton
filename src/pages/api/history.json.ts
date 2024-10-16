@@ -17,6 +17,7 @@ export const POST: APIRoute = async ({request}) => {
             generated_history,
             stamp
         } = body;
+        
         await db.insert(History).values({username, image_identifier, generated_history, stamp: new Date(stamp) })
 
         return new Response(JSON.stringify({

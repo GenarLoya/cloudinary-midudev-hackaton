@@ -33,39 +33,31 @@ const images = await getCollection("images");
   >
     <button>Upload</button>
   </CldUploadWidget>
-  <ul>
-    {
-      images.map((image: any) => {
-        return (
-          <li>
-            <a href={`/photo?id=${image.data.public_id}`}>
-              <CldImage
-                src={image.data.public_id}
-                width={250}
-                height={250}
-                crop={{
-                  type: "fill",
-                  source: true,
-                }}
-              />
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <input type="text" id="username" />
+  <button id="submit-image"> Submit </button>
 
   <script>
     import { navigate } from "astro:transitions/client";
 
+    let image_id: string | undefined;
     const widget = document.getElementById("upload-widget");
+    const username = document.getElementById("username") as HTMLInputElement;
+    const submit = document.getElementById("submit-image");
 
     if (widget) {
       widget.addEventListener("clduploadwidget:success", ((
-        e: CustomEvent<{ info: { public_id: string } }>
+        e: CustomEvent<{ info: { public_id: string } }>,
       ) => {
         const publicId = e.detail.info.public_id;
-        navigate(`/upload/${publicId}`);
+        image_id = publicId;
+      }) as EventListener);
+    }
+
+    if (submit) {
+      submit.addEventListener("click", (() => {
+        if (image_id && username?.value?.length) {
+          navigate(`/upload/${image_id}?username=${username.value}`);
+        }
       }) as EventListener);
     }
   </script>
