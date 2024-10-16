@@ -1,9 +1,16 @@
 ---
 import getImageVampire from "../helpers/getImageVampire";
+import insertImageRegister from "../helpers/insertImageRegister";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
 
-const url = getImageVampire(Astro.props.id);
+const { id } = Astro.params as { id: string };
+const username = Astro.url.searchParams.get("username") as string;
+
+console.log(id, username);
+
+const url = getImageVampire(id);
+await insertImageRegister(id, username, "Pending to generate");
 ---
 
 <div class="flex gap-4 justify-center items-center">
