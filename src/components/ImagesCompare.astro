@@ -1,6 +1,9 @@
 ---
 import getImageVampire from "../helpers/getImageVampire";
 import insertImageRegister from "../helpers/insertImageRegister";
+import generateVampireHistory from "../helpers/generateVampireHistory";
+import { convertImageToBase64 } from "../helpers/convertImageUrlToBase64";
+import { model } from "../libs/gemini";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
 
@@ -10,7 +13,11 @@ const username = Astro.url.searchParams.get("username") as string;
 console.log(id, username);
 
 const url = getImageVampire(id);
-await insertImageRegister(id, username, "Pending to generate");
+
+const history = await generateVampireHistory(url.transformedUrl);
+
+await insertImageRegister(id, username, history);
+console.log(history);
 ---
 
 <div class="flex gap-4 justify-center items-center">
@@ -19,9 +26,10 @@ await insertImageRegister(id, username, "Pending to generate");
     src={url.transformedUrl}
     alt="Your image"
   />
-  <img
+  <!-- <img
     class="h-[300px] w-max aspect-auto rounded-md"
     src={url.originalUrl}
     alt="Your image"
-  />
+  /> -->
 </div>
+<p class="text-left text-white font-bold">{history}</p>
