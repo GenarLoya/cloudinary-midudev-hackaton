@@ -3,6 +3,7 @@ import getImageVampire from "../helpers/getImageVampire";
 import insertImageRegister from "../helpers/insertImageRegister";
 import generateVampireHistory from "../helpers/generateVampireHistory";
 import { convertImageToBase64 } from "../helpers/convertImageUrlToBase64";
+import { converterHtml } from "../libs/showdown";
 import { model } from "../libs/gemini";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -17,7 +18,8 @@ const url = getImageVampire(id);
 const history = await generateVampireHistory(url.transformedUrl);
 
 await insertImageRegister(id, username, history);
-console.log(history);
+
+const htmlHistory = converterHtml.makeHtml(history);
 ---
 
 <div class="flex gap-4 justify-center items-center">
@@ -32,4 +34,4 @@ console.log(history);
     alt="Your image"
   /> -->
 </div>
-<p class="text-left text-white font-bold">{history}</p>
+<p class="text-left !text-white font-bold" set:html={htmlHistory} />

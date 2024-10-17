@@ -11,10 +11,21 @@ export default async function generateVampireHistory(url: string): Promise<strin
         },
     };
 
-    const geminiResponse = await model.generateContent([
-        imageGemini,
-        "Make a fiction vampire history using the image, try tell her origin and interest bloody lore, you are a writer of horror books",
-    ]);
+    let geminiResponse = null;
+
+    while(true) {
+        try {
+            geminiResponse = await model.generateContent([
+                imageGemini,
+                "Make a fiction vampire history using the image, try tell her origin and interest bloody lore, you are a writer of horror books, can use markdown for separate subtitles",
+            ]);
+
+            break;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return geminiResponse.response.text();
 }   
