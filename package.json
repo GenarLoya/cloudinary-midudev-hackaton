@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/db": "^0.14.2",
     "@astrojs/tailwind": "^5.1.2",
+    "@google/generative-ai": "^0.21.0",
     "astro": "^4.16.1",
     "astro-cloudinary": "^1.1.0",
     "cloudinary": "^2.5.1",

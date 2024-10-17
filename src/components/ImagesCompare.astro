@@ -1,6 +1,7 @@
 ---
 import getImageVampire from "../helpers/getImageVampire";
 import insertImageRegister from "../helpers/insertImageRegister";
+import { model } from "../libs/gemini";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
 
@@ -10,7 +11,14 @@ const username = Astro.url.searchParams.get("username") as string;
 console.log(id, username);
 
 const url = getImageVampire(id);
+
+const geminiResponse = await model.generateContent([
+  "Hola, crea una historia de un vampiro",
+]);
+
 await insertImageRegister(id, username, "Pending to generate");
+
+console.log(geminiResponse);
 ---
 
 <div class="flex gap-4 justify-center items-center">
