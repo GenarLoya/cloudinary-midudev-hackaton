@@ -1,10 +1,11 @@
 import type { APIRoute } from "astro";
 import { db, History } from "astro:db";
+import { turso } from "../../turso";
 
 export const GET: APIRoute = async ({params, request}) => {
-    const data = await db.select().from(History);
+    const { rows } = await turso.execute(`SELECT * FROM history`);
     return new Response(JSON.stringify({
-        data
+        data: rows
     }))
 }
 
@@ -18,7 +19,10 @@ export const POST: APIRoute = async ({request}) => {
             stamp
         } = body;
         
-        await db.insert(History).values({username, image_identifier, generated_history, stamp: new Date(stamp) })
+        await turso.execute({
+            sql: `INSERT INTO history (username, image_identifier, generated_history, stamp) VALUES (?, ?, ?, ?)`,
+            args: [username, image_identifier, generated_history, new Date(stamp)]
+        });
 
         return new Response(JSON.stringify({
             msg: 'TEST'
