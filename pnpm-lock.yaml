@@ -9,40 +9,40 @@ importers:
   .:
     dependencies:
       '@astrojs/check':
-        specifier: ^0.9.4
+        specifier: 0.9.4
         version: 0.9.4(typescript@5.6.3)
       '@astrojs/db':
-        specifier: ^0.14.2
+        specifier: 0.14.2
         version: 0.14.2
       '@astrojs/tailwind':
-        specifier: ^5.1.2
+        specifier: 5.1.2
         version: 5.1.2(astro@4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3))(tailwindcss@3.4.13)
       '@google/generative-ai':
-        specifier: ^0.21.0
+        specifier: 0.21.0
         version: 0.21.0
       '@types/showdown':
-        specifier: ^2.0.6
+        specifier: 2.0.6
         version: 2.0.6
       astro:
-        specifier: ^4.16.1
+        specifier: 4.16.1
         version: 4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3)
       astro-cloudinary:
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0(astro@4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
       axios:
-        specifier: ^1.7.7
+        specifier: 1.7.7
         version: 1.7.7
       cloudinary:
-        specifier: ^2.5.1
+        specifier: 2.5.1
         version: 2.5.1
       showdown:
-        specifier: ^2.1.0
+        specifier: 2.1.0
         version: 2.1.0
       tailwindcss:
-        specifier: ^3.4.13
+        specifier: 3.4.13
         version: 3.4.13
       typescript:
-        specifier: ^5.6.3
+        specifier: 5.6.3
         version: 5.6.3
 
 packages:
