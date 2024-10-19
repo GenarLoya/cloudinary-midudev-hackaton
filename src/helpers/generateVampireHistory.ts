@@ -1,4 +1,4 @@
-import { genAI, model } from "../libs/gemini";
+import { model } from "../libs/gemini";
 import { convertImageToBase64 } from "./convertImageUrlToBase64";
 
 export default async function generateVampireHistory(
