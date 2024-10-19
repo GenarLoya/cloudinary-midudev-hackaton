@@ -5,6 +5,11 @@ export default {
 		extend: {
 			fontFamily: {
 				'qwitcher-grypen': ['Qwitcher Grypen', 'sans-serif']
+			},
+			backgroundImage: {
+				'history-background': "url('/history-text.svg')",
+				'title-background': "url('/title-background.svg')",
+				'history-profile': "url('/history-profile.svg')",
 			}
 		},
 	},
