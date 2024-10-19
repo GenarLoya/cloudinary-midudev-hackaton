@@ -1,10 +1,8 @@
 ---
+import generateVampireHistory from "../helpers/generateVampireHistory";
 import getImageVampire from "../helpers/getImageVampire";
 import insertImageRegister from "../helpers/insertImageRegister";
-import generateVampireHistory from "../helpers/generateVampireHistory";
-import { convertImageToBase64 } from "../helpers/convertImageUrlToBase64";
 import { converterHtml } from "../libs/showdown";
-import { model } from "../libs/gemini";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
 
