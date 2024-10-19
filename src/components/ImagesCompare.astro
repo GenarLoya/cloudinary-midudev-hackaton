@@ -6,8 +6,10 @@ import { converterHtml } from "../libs/showdown";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
 
-const { id } = Astro.params as { id: string };
-const username = Astro.url.searchParams.get("username") as string;
+const { id, username } = Astro.props as {
+  id: string;
+  username: string;
+};
 
 console.log(id, username);
 
