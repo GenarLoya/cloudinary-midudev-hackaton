@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HorrorImage from "../components/HorrorImage.astro";
-import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import door from "../../public/door.webp";
 import getAllHistoryDatabase from "../helpers/getAllHistoryDatabase";
 import getImageVampire from "../helpers/getImageVampire";
 
@@ -38,7 +39,7 @@ const imagesWithUrl = images.map((image: any) => ({
       <div
         class="w-1/4 h-[400px] transition-all cursor-pointer hover:brightness-125 relative group"
       >
-        <img src="/door.webp" />
+        <Image src={door} alt="Door"/>
         <div
           class="absolute top-0 bg-slate-300/15 w-full h-full flex-col items-center justify-center hidden group-hover:flex transition-all"
         >
