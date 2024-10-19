@@ -1,5 +1,5 @@
 ---
-import {} from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
   rotation: Boolean;
@@ -7,7 +7,7 @@ interface Props {
   data: any;
 }
 
-const { rotation, direction } = Astro.props;
+const { rotation, direction, data } = Astro.props;
 
 const rotationRight = "rotate-3";
 const rotationLeft = "-rotate-3";
@@ -19,6 +19,6 @@ const rotationLeft = "-rotate-3";
 `
 >
   <div class="w-full flex-1 bg-slate-100 border-4 border-amber-800">
-    {JSON.stringify(data)}
+    <Image src={data.url} alt={data.username + " Vampire"} inferSize={true} />
   </div>
 </div>

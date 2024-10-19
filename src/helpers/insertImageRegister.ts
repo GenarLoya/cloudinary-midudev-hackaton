@@ -1,20 +1,34 @@
-import { db, eq, History } from "astro:db";
+import { turso } from "../turso";
 
-export default async function insertImageRegister(id: string, username: string, history: string) {
-  const data = (await db.select().from(History)).find(history => history.image_identifier === id)
+export default async function insertImageRegister(
+  id: string,
+  username: string,
+  history: string
+) {
+  // Buscar el registro con el identificador de imagen dado
+  const { rows } = await turso.execute({
+    sql: `SELECT * FROM history WHERE image_identifier = ?`,
+    args: [id],
+  });
+
+  const data = rows.length > 0 ? rows[0] : null;
 
   if (!data) {
-    return await db.insert(History).values({username, image_identifier: id, generated_history: history, stamp: new Date() })    
+    // Si no existe, insertar un nuevo registro
+    await turso.execute({
+      sql: `INSERT INTO history (username, image_identifier, generated_history, stamp) VALUES (?, ?, ?, ?)`,
+      args: [username, id, history, new Date()],
+    });
+    return { msg: "Registro insertado exitosamente" };
   }
 
-  console.log(data)
+  console.log(data);
 
-  const findId = data.id
+  const findId = data.id;
 
-  return await db.update(History).set({
-    username,
-    image_identifier:id,
-    generated_history: history,
-    stamp:new Date()
-  }).where(eq(History.id, findId))
+  // Si existe, actualizar el registro existente
+  await turso.execute({
+    sql: `UPDATE history SET username = ?, image_identifier = ?, generated_history = ?, stamp = ? WHERE id = ?`,
+    args: [username, id, history, new Date(), findId],
+  });
 }

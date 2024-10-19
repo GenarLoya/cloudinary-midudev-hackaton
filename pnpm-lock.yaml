@@ -21,7 +21,7 @@ importers:
         specifier: 0.21.0
         version: 0.21.0
       '@libsql/client':
-        specifier: ^0.14.0
+        specifier: 0.14.0
         version: 0.14.0
       '@types/showdown':
         specifier: 2.0.6

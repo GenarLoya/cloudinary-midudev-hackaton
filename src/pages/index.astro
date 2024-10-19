@@ -2,10 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import HorrorImage from "../components/HorrorImage.astro";
 import { getCollection } from "astro:content";
+import getAllHistoryDatabase from "../helpers/getAllHistoryDatabase";
+import getImageVampire from "../helpers/getImageVampire";
 
-const images = await getCollection("vampire-images");
-
-console.log(images);
+const images = await getAllHistoryDatabase();
+const imagesWithUrl = images.map((image: any) => ({
+  ...image,
+  url: getImageVampire(image.image_identifier).transformedUrl,
+}));
 ---
 
 <Layout title="Vampire Wall">
@@ -54,7 +58,7 @@ console.log(images);
     <!-- <h1 class="font-qwitcher-grypen font-bold text-7xl text-amber-500 text-center">Vampire Wall</h1> -->
     <div class="flex flex-col gap-10 items-center md:grid md:grid-cols-3 my-10">
       {
-        images.map((image) => (
+        imagesWithUrl.map((image: any) => (
           <HorrorImage rotation={false} direction="right" data={image} />
         ))
       }
