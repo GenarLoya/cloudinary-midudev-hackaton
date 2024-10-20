@@ -10,6 +10,15 @@ export default {
 				'history-background': "url('/history-text.svg')",
 				'title-background': "url('/title-background.svg')",
 				'history-profile': "url('/history-profile.svg')",
+			},
+			animation: {
+				'infinite-scroll': 'infinite-scroll 25s linear infinite',
+			},
+			keyframes: {
+				'infinite-scroll': {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(-100%)' },
+				}
 			}
 		},
 	},

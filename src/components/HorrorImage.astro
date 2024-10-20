@@ -13,12 +13,14 @@ const rotationRight = "rotate-3";
 const rotationLeft = "-rotate-3";
 ---
 
-<div
-  class=`w-11/12 bg-amber-600 min-h-[300px] p-2 flex flex-col border-4 border-amber-800 ${rotation ? direction === 'right' ? rotationRight : rotationLeft : ''} cursor-pointer
+<a
+  class=`w-full bg-amber-600 h-fit p-2 flex flex-col border-4 border-amber-800 ${rotation ? direction === 'right' ? rotationRight : rotationLeft : ''} cursor-pointer
   transition-all duration-500 hover:brightness-125 hover:shadow-xl hover:scale-105
-`
+  `
+  href={`/${data.image_identifier}`}
 >
   <div class="w-full flex-1 bg-slate-100 border-4 border-amber-800">
     <Image src={data.url} alt={data.username + " Vampire"} inferSize={true} />
+    <!-- <img src={data.url} alt={data.username + " Vampire"}  /> -->
   </div>
-</div>
+</a>
