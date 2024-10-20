@@ -2,6 +2,7 @@
 import generateVampireHistory from "../helpers/generateVampireHistory";
 import getImageVampire from "../helpers/getImageVampire";
 import insertImageRegister from "../helpers/insertImageRegister";
+import Layout from "../layouts/Layout.astro";
 import { converterHtml } from "../libs/showdown";
 
 await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -21,17 +22,18 @@ await insertImageRegister(id, username, history);
 
 const htmlHistory = converterHtml.makeHtml(history);
 ---
-
-<div class="flex gap-4 justify-center items-center">
-  <img
-    class="h-[300px] w-max aspect-auto rounded-md"
-    src={url.transformedUrl}
-    alt="Your image"
-  />
-  <!-- <img
-    class="h-[300px] w-max aspect-auto rounded-md"
-    src={url.originalUrl}
-    alt="Your image"
-  /> -->
-</div>
-<p class="text-left !text-white font-bold" set:html={htmlHistory} />
+<Layout title="Your image has been proceseed">
+  <div class="flex gap-4 justify-center items-center">
+      <img
+      class="h-[300px] w-max aspect-auto rounded-md"
+      src={url.transformedUrl}
+      alt="Your image"
+      />
+      <!-- <img
+      class="h-[300px] w-max aspect-auto rounded-md"
+      src={url.originalUrl}
+      alt="Your image"
+    /> -->
+  </div>
+  <p class="text-left text-white font-bold" set:html={htmlHistory} />
+</Layout>

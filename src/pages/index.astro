@@ -24,20 +24,24 @@ const imagesWithUrl = images.map((image: any) => ({
         Vampire Wall
       </div>
     </div>
-    <div class="flex items-center justify-center">
+
+    <div class="flex items-center justify-center flex-col gap-4">
       <div
         class="text-center font-qwitcher-grypen text-6xl border rounded-lg bg-slate-600 border-slate-800 w-fit px-4 py-1"
       >
         Welcome
       </div>
+      <p class="font-semibold text-lg">
+        Click on the door to generate your own Vampire History
+      </p>
     </div>
 
-    <a
+    <div
       class="flex flex-col items-center justify-center gap-10 w-full my-2"
-      href="/upload"
     >
-      <div
+      <a
         class="w-1/4 h-[400px] transition-all cursor-pointer hover:brightness-125 relative group"
+        href="/upload"
       >
         <Image src={door} alt="Door"/>
         <div
@@ -49,20 +53,25 @@ const imagesWithUrl = images.map((image: any) => ({
             Generate your own History
           </div>
         </div>
-      </div>
-    </a>
-    <!-- <div class="flex flex-col items-center justify-center gap-10 w-full my-2">
-			<div class="w-1/4 bg-amber-800 h-[400px]">
-
-			</div>
-		</div> -->
-    <!-- <h1 class="font-qwitcher-grypen font-bold text-7xl text-amber-500 text-center">Vampire Wall</h1> -->
-    <div class="flex flex-col gap-10 items-center md:grid md:grid-cols-3 my-10">
+      </a>
+    </div>
+    <h1 class="text-red-600 text-center font-semibold text-4xl my-2">Check some Vampire History</h1>
+    <!-- <div class="flex flex-col gap-10 items-center md:grid md:grid-cols-3 my-10">
       {
         imagesWithUrl.map((image: any) => (
           <HorrorImage rotation={false} direction="right" data={image} />
         ))
       }
+    </div> -->
+    <!-- <div class="flex flex-col gap-10 items-center md:grid md:grid-cols-3 my-10"> -->
+    <div class="w-full inline-flex flex-nowrap">
+      <div class="flex items-center justify-center md:justify-start [&_a]:mx-8 [&_a]:max-w-none animate-infinite-scroll">
+        {
+          imagesWithUrl.map((image: any) => (
+            <HorrorImage rotation={false} direction="right" data={image} />
+          ))
+        }
+      </div>
     </div>
   </main>
 </Layout>
