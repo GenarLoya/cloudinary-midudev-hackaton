@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-import { db, History } from "astro:db";
 import { turso } from "../../turso";
 
 export const GET: APIRoute = async ({params, request}) => {

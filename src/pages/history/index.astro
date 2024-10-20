@@ -1,28 +1,28 @@
 ---
-import { History as AstroHistory } from "astro:db";
+// import { History as AstroHistory } from "astro:db";
 import Layout from "../../layouts/Layout.astro";
 
 
-const res = await fetch(new URL('/api/history.json', Astro.url));
-const json = await res.json();
-const data = json.data as typeof AstroHistory[];
+// const res = await fetch(new URL('/api/history.json', Astro.url));
+// const json = await res.json();
+// const data = json.data
 ---
 <Layout title="Vampire Wall">
     <div class="p-2 flex flex-col gap-2">
         <a href="/history/create" class="bg-blue-600 text-white font-semibold p-3 rounded-lg w-fit">Create Test Record</a>
         {
-            data.map(({id, image_identifier, generated_history, username, stamp}) => (
-                <article class="bg-white p-2 m-2 shadow rounded-lg border flex flex-col gap-4">
-                    <div class="flex items-center justify-between">
-                        <div class="font-semibold uppercase">ID: {id} - {username}</div>
-                        <div>{stamp}</div>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <div class="bg-slate-100 p-2 rounded-lg w-full min-h-[200px]">{image_identifier}</div>
-                        <div class="w-full bg-slate-800 text-slate-300 p-2 rounded-lg min-h-[200px] truncate">{generated_history}</div>
-                    </div>
-                </article>
-            ))
+            // data.map(({id, image_identifier, generated_history, username, stamp}) => (
+            //     <article class="bg-white p-2 m-2 shadow rounded-lg border flex flex-col gap-4">
+            //         <div class="flex items-center justify-between">
+            //             <div class="font-semibold uppercase">ID: {id} - {username}</div>
+            //             <div>{stamp}</div>
+            //         </div>
+            //         <div class="flex items-start gap-2">
+            //             <div class="bg-slate-100 p-2 rounded-lg w-full min-h-[200px]">{image_identifier}</div>
+            //             <div class="w-full bg-slate-800 text-slate-300 p-2 rounded-lg min-h-[200px] truncate">{generated_history}</div>
+            //         </div>
+            //     </article>
+            // ))
         }
     </div>
 </Layout>

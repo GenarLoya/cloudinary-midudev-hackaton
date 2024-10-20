@@ -1,6 +1,7 @@
+import type { Row } from "@libsql/client";
 import { turso } from "../turso";
 
-export default async function getOneHistoryDatabase(id: string) {
+export default async function getOneHistoryDatabase(id: string) : Promise<Row | null> {
   // Buscar el registro con el identificador de imagen dado
   const { rows } = await turso.execute({
     sql: `SELECT * FROM history WHERE image_identifier = ?`,

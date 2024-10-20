@@ -10,7 +10,9 @@ const { id } = Astro.params as { id: string };
 
 const data = await getHistoryDatabase(id);
 const url = getImageVampire(id);
-const historyHtml = converterHtml.makeHtml(data?.generated_history ?? "");
+
+const generatedHistory = data?.generated_history ?? "";
+const historyHtml = converterHtml.makeHtml(String(generatedHistory));
 ---
 
 <Layout title="Vampire Wall">
