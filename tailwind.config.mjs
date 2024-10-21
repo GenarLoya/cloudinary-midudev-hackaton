@@ -4,7 +4,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'qwitcher-grypen': ['Qwitcher Grypen', 'sans-serif']
+				// 'qwitcher-grypen': ['Qwitcher Grypen', 'sans-serif']
+				// 'qwitcher-grypen': ['Henny Penny', 'sans-serif']
+				'qwitcher-grypen': ['Butcherman', 'sans-serif']
 			},
 			backgroundImage: {
 				'history-background': "url('/history-text.svg')",
@@ -13,6 +15,7 @@ export default {
 			},
 			animation: {
 				'infinite-scroll': 'infinite-scroll 25s linear infinite',
+				'infinite-scroll-slow': 'infinite-scroll 40s linear infinite',
 			},
 			keyframes: {
 				'infinite-scroll': {

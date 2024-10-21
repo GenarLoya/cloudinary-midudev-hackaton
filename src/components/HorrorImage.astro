@@ -14,13 +14,14 @@ const rotationLeft = "-rotate-3";
 ---
 
 <a
-  class=`w-full bg-amber-600 h-fit p-2 flex flex-col border-4 border-amber-800 ${rotation ? direction === 'right' ? rotationRight : rotationLeft : ''} cursor-pointer
-  transition-all duration-500 hover:brightness-125 hover:shadow-xl hover:scale-105
+  class=`bg-amber-600 p-2 flex flex-col border-4 border-amber-800 ${rotation ? direction === 'right' ? rotationRight : rotationLeft : ''} cursor-pointer
+  transition-all duration-500  hover:shadow-xl hover:scale-105 h-fit group
   `
   href={`/${data.image_identifier}`}
 >
-  <div class="w-full flex-1 bg-slate-100 border-4 border-amber-800">
-    <Image src={data.url} alt={data.username + " Vampire"} inferSize={true} />
-    <!-- <img src={data.url} alt={data.username + " Vampire"}  /> -->
+  <div class="w-full flex-1 bg-slate-100 border-4 border-amber-800 h-fit relative">
+    <div class="text-white absolute bg-black/75 w-full h-full transition-all group-hover:opacity-100 opacity-0 flex items-center justify-center">Vampire history of {data.username}</div>
+    <!-- <Image src={data.url} alt={data.username + " Vampire"} inferSize={true} /> -->
+    <img src={data.url} alt={data.username + " Vampire"}  />
   </div>
 </a>

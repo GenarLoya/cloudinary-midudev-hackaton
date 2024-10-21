@@ -31,11 +31,12 @@ const historyHtml = converterHtml.makeHtml(data?.generated_history ?? "");
 
         <div class="flex gap-2 p-2">
           <div class="w-1/2 bg-history-profile bg-no-repeat bg-cover bg-center">
-            <Image
+            {/* <Image
               src={url.transformedUrl}
               alt={data.username + " Vampire"}
               inferSize={true}
-            />
+            /> */}
+            <img src={url.transformedUrl} alt={data.username + " Vampire"} />
           </div>
           <div class="w-1/2 flex items-center justify-center flex-col bg-history-background bg-no-repeat bg-cover bg-center">
             <div
