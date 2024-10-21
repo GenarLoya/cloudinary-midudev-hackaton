@@ -7,34 +7,44 @@ const images = await getCollection("images");
 ---
 
 <Layout title="Cloudinary Hackathon">
-  <h1 color="brand">Hackathon Cloudinary</h1>
-  <CldUploadWidget
-    id="upload-widget"
-    uploadPreset="astro-upload-preset"
-    options={{
-      sources: ["local"],
-      multiple: false,
-      maxFiles: 1,
-      language: "es",
-      text: {
-        es: {
-          or: "O",
+  <div class="flex flex-col gap-4 items-center p-2 justify-center h-screen">
+    <h1 color="brand" class="text-white font-qwitcher-grypen text-6xl text-center">Select your image to generate your Vampire History</h1>
+    <input type="text" id="username" placeholder="YOUR NAME" class="p-2 w-1/3 focus:border-red-600 border border-slate-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600
+      transition-all hover:scale-105 duration-500 bg-slate-600 focus:text-white
+    " />
+    <CldUploadWidget
+      class="w-1/3"
+      id="upload-widget"
+      uploadPreset="astro-upload-preset"
+      options={{
+        sources: ["local"],
+        multiple: false,
+        maxFiles: 1,
+        language: "es",
+        text: {
+          es: {
+            or: "O",
 
-          menu: {
-            files: "Subir desde tu dispositivo",
-          },
-          local: {
-            browse: "Seleccionar",
-            dd_title_single: "Arrastra tu imagen aquí",
+            menu: {
+              files: "Subir desde tu dispositivo",
+            },
+            local: {
+              browse: "Seleccionar",
+              dd_title_single: "Arrastra tu imagen aquí",
+            },
           },
         },
-      },
-    }}
-  >
-    <button>Upload</button>
-  </CldUploadWidget>
-  <input type="text" id="username" />
-  <button id="submit-image"> Submit </button>
+      }}
+    >
+      <button class="bg-slate-600/25 p-2 text-white font-semibold w-full min-h-[30vh] rounded-md transition-all hover:bg-slate-400/25 duration-500 border-2 border-slate-600/25
+        hover:scale-105 hover:border-slate-800 hover:shadow-xl
+      ">Upload your image</button>
+    </CldUploadWidget>
+    
+    <button id="submit-image" class="bg-red-600 p-2 text-white font-semibold rounded-md hover:bg-red-700 transition-all w-fit hover:scale-105 duration-500">
+      Generate your vampire history
+    </button>
+  </div>
 
   <script>
     import { navigate } from "astro:transitions/client";

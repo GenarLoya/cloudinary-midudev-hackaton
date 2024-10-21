@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import backArrow from "../../../public/back-arrow.svg";
+import Layout from "../../layouts/Layout.astro";
+import getHistoryDatabase from "../../helpers/getOneHistoryDatabase";
+import { converterHtml } from "../../libs/showdown";
+import getImageVampire from "../../helpers/getImageVampire";
+
+const { id } = Astro.params as { id: string };
+
+const data = await getHistoryDatabase(id);
+const url = getImageVampire(id);
+const historyHtml = converterHtml.makeHtml(data?.generated_history ?? "");
+---
+
+<Layout title="Vampire Wall">
+  {
+    data && (
+      <div class="w-full h-screen p-4 flex flex-col gap-2">
+        <div class="flex items-center justify-center gap-2 p-2">
+          <a
+            href="/"
+            class="w-max p-2 hover:scale-110 transition-all rounded-md object-cover"
+          >
+            <Image src={backArrow} alt="Back Arrow" height={100} />
+          </a>
+          <div class="w-full text-white font-semibold text-center text-8xl font-qwitcher-grypen col-span-11">
+            {`"${data.username}" `} Vampire History
+          </div>
+        </div>
+
+        <div class="flex gap-2 p-2">
+          <div class="w-1/2 bg-history-profile bg-no-repeat bg-cover bg-center">
+            {/* <Image
+              src={url.transformedUrl}
+              alt={data.username + " Vampire"}
+              inferSize={true}
+            /> */}
+            <img src={url.transformedUrl} alt={data.username + " Vampire"} />
+          </div>
+          <div class="w-1/2 flex items-center justify-center flex-col bg-history-background bg-no-repeat bg-cover bg-center">
+            <div
+              class="z-10 mx-4 text-white h-[80%]flex items-center justify-center"
+              set:html={historyHtml}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+  {
+    !data && (
+      <div class="w-full h-screen p-4 flex flex-col gap-2">Not found</div>
+    )
+  }
+</Layout>

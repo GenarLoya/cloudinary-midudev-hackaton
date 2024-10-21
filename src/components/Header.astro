@@ -1,0 +1,58 @@
+---
+
+---
+
+<header
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 h-24 bg-transparent"
+>
+  <div class="container mx-auto px-4 h-full flex items-center justify-between">
+    <h1 class="text-gold font-serif transition-all duration-300 text-4xl">
+      VampireWall
+    </h1>
+    <div class="welcome text-gray-300 transition-all duration-300 text-base">
+      Welcome
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector("header");
+  const title = document.querySelector("h1");
+  const welcome = document.querySelector(".welcome");
+
+  if (header && title && welcome) {
+    if (window.scrollY > 0) {
+      header.classList.add("scrolled");
+      title.classList.add("scrolled");
+      welcome.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+      title.classList.remove("scrolled");
+      welcome.classList.remove("scrolled");
+    }
+  }
+</script>
+
+<style>
+  header {
+    transition:
+      height 0.3s,
+      background-color 0.3s;
+  }
+  header.scrolled {
+    height: 4rem;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  h1 {
+    transition: font-size 0.3s;
+  }
+  h1.scrolled {
+    font-size: 1.5rem;
+  }
+  .welcome {
+    transition: font-size 0.3s;
+  }
+  .welcome.scrolled {
+    font-size: 0.875rem;
+  }
+</style>

@@ -1,9 +1,19 @@
 ---
 import ImagesCompare from "../../components/ImagesCompare.astro";
 import Layout from "../../layouts/Layout.astro";
+import LoaderGenration from "../../components/LoaderGenration.astro";
+
+const { id } = Astro.params as { id: string };
+const username = Astro.url.searchParams.get("username") as string;
 ---
 
 <Layout title="Your image has been proceseed">
-  <h1 class="text-red-500">fgdsgddfdf</h1>
-  <ImagesCompare />
+  <ImagesCompare server:defer username={username} id={id}>
+    <Fragment slot="fallback">
+      <LoaderGenration />
+    </Fragment>
+    <Fragment slot="error">
+      <div class="min-h-20">ERROR</div>
+    </Fragment>
+  </ImagesCompare>
 </Layout>

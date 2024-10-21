@@ -9,34 +9,43 @@ importers:
   .:
     dependencies:
       '@astrojs/check':
-        specifier: ^0.9.4
+        specifier: 0.9.4
         version: 0.9.4(typescript@5.6.3)
       '@astrojs/db':
-        specifier: ^0.14.2
+        specifier: 0.14.2
         version: 0.14.2
       '@astrojs/tailwind':
-        specifier: ^5.1.2
+        specifier: 5.1.2
         version: 5.1.2(astro@4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3))(tailwindcss@3.4.13)
       '@google/generative-ai':
-        specifier: ^0.21.0
+        specifier: 0.21.0
         version: 0.21.0
+      '@libsql/client':
+        specifier: 0.14.0
+        version: 0.14.0
+      '@types/showdown':
+        specifier: 2.0.6
+        version: 2.0.6
       astro:
-        specifier: ^4.16.1
+        specifier: 4.16.1
         version: 4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3)
       astro-cloudinary:
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0(astro@4.16.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3))(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
       axios:
-        specifier: ^1.7.7
+        specifier: 1.7.7
         version: 1.7.7
       cloudinary:
-        specifier: ^2.5.1
+        specifier: 2.5.1
         version: 2.5.1
+      showdown:
+        specifier: 2.1.0
+        version: 2.1.0
       tailwindcss:
-        specifier: ^3.4.13
+        specifier: 3.4.13
         version: 3.4.13
       typescript:
-        specifier: ^5.6.3
+        specifier: 5.6.3
         version: 5.6.3
 
 packages:
@@ -861,6 +870,9 @@ packages:
   '@types/node@22.7.5':
     resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
 
+  '@types/showdown@2.0.6':
+    resolution: {integrity: sha512-pTvD/0CIeqe4x23+YJWlX2gArHa8G0J0Oh6GKaVXV7TAeickpkkZiNOgFcFcmLQ5lB/K0qBJL1FtRYltBfbGCQ==}
+
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
@@ -1138,6 +1150,10 @@ packages:
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+
+  commander@9.5.0:
+    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
+    engines: {node: ^12.20.0 || >=14}
 
   common-ancestor-path@1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
@@ -1698,6 +1714,7 @@ packages:
 
   libsql@0.4.6:
     resolution: {integrity: sha512-F5M+ltteK6dCcpjMahrkgT96uFJvVI8aQ4r9f2AzHQjC7BkAYtvfMSTWGvRBezRgMUIU2h1Sy0pF9nOGOD5iyA==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lilconfig@2.1.0:
@@ -2300,6 +2317,10 @@ packages:
 
   shiki@1.22.0:
     resolution: {integrity: sha512-/t5LlhNs+UOKQCYBtl5ZsH/Vclz73GIqT2yQsCBygr8L/ppTdmpL4w3kPLoZJbMKVWtoG77Ue1feOjZfDxvMkw==}
+
+  showdown@2.1.0:
+    resolution: {integrity: sha512-/6NVYu4U819R2pUIk79n67SYgJHWCce0a5xTP979WbNp0FL9MN1I1QK662IDU1b6JzKTvmhgI7T7JYIxBi3kMQ==}
+    hasBin: true
 
   signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
@@ -3569,6 +3590,8 @@ snapshots:
     dependencies:
       undici-types: 6.19.8
 
+  '@types/showdown@2.0.6': {}
+
   '@types/unist@3.0.3': {}
 
   '@types/ws@8.5.12':
@@ -3958,6 +3981,8 @@ snapshots:
   comma-separated-tokens@2.0.3: {}
 
   commander@4.1.1: {}
+
+  commander@9.5.0: {}
 
   common-ancestor-path@1.0.1: {}
 
@@ -5252,6 +5277,10 @@ snapshots:
       '@shikijs/types': 1.22.0
       '@shikijs/vscode-textmate': 9.3.0
       '@types/hast': 3.0.4
+
+  showdown@2.1.0:
+    dependencies:
+      commander: 9.5.0
 
   signal-exit@3.0.7: {}
 

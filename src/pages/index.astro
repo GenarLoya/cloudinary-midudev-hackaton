@@ -1,65 +1,75 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HorrorImage from "../components/HorrorImage.astro";
+import { Image } from "astro:assets";
+import door from "../../public/door.webp";
+import getAllHistoryDatabase from "../helpers/getAllHistoryDatabase";
+import getImageVampire from "../helpers/getImageVampire";
+import VampireSection from "../components/VampireSection.astro";
+
+const images = await getAllHistoryDatabase();
+const imagesWithUrl = images.map((image: any) => ({
+  ...image,
+  url: getImageVampire(image.image_identifier).transformedUrl,
+}));
 ---
 
 <Layout title="Vampire Wall">
-	<main class="text-white">
-		<div class="flex justify-center items-center">
-			<div
-				class="text-center text-7xl font-bold font-qwitcher-grypen
-				bg-gradient-to-t from-amber-500 to-amber-800 inline-block
+  <main class="text-white bg-gradient-to-b from-slate-950 to-slate-800 p-3">
+    <div class="flex justify-center items-center">
+      <div
+        class="text-center text-7xl font-bold font-qwitcher-grypen
+				bg-gradient-to-t from-red-500 to-red-800 inline-block
 				text-transparent bg-clip-text p-2"
-			>
-				Vampire Wall
-			</div>
-		</div>
-		<div class="flex items-center justify-center">
-			<div
-				class="text-center font-qwitcher-grypen text-6xl border rounded-lg bg-slate-600 border-slate-800 w-fit px-4 py-1"
-			>
-				Welcome
-			</div>
-		</div>
+      >
+        Vampire Wall
+      </div>
+    </div>
 
-		<a
-			class="flex flex-col items-center justify-center gap-10 w-full my-2"
-			href="/upload"
-		>
-			<div
-				class="w-1/4 h-[400px] transition-all cursor-pointer hover:brightness-125 relative group"
-			>
-				<img src="/door.webp" />
-				<div
-					class="absolute top-0 bg-slate-300/15 w-full h-full flex-col items-center justify-center hidden group-hover:flex transition-all"
-				>
-					<div
-						class="font-semibold text-2xl shadow p-2 border border-amber-500 rounded-lg bg-amber-800 text-white"
-					>
-						Generate your own History
-					</div>
-				</div>
-			</div>
-		</a>
-		<!-- <div class="flex flex-col items-center justify-center gap-10 w-full my-2">
-			<div class="w-1/4 bg-amber-800 h-[400px]">
+    <div class="flex items-center justify-center flex-col gap-4">
+      <div
+        class="text-center font-qwitcher-grypen text-6xl border rounded-lg bg-slate-600 border-slate-800 w-fit px-4 py-1"
+      >
+        Welcome
+      </div>
+      <p class="font-semibold text-lg">
+        Click on the door to generate your own Vampire History
+      </p>
+    </div>
 
-			</div>
-		</div> -->
-		<!-- <h1 class="font-qwitcher-grypen font-bold text-7xl text-amber-500 text-center">Vampire Wall</h1> -->
-		<div
-			class="flex flex-col gap-10 items-center md:grid md:grid-cols-3 my-10"
-		>
-			{
-				Array(10)
-					.fill(0)
-					.map((_, i) => (
-						<HorrorImage
-							rotation={i % 2 === 0}
-							direction={i % 2 === 0 ? "right" : "left"}
-						/>
-					))
-			}
-		</div>
-	</main>
+    <div
+      class="flex flex-col items-center justify-center gap-10 w-full my-2"
+    >
+      <a
+        class="w-1/4 h-[400px] transition-all cursor-pointer hover:brightness-125 relative group"
+        href="/upload"
+      >
+        <Image src={door} alt="Door"/>
+        <div
+          class="absolute top-0 bg-slate-300/15 w-full h-full flex-col items-center justify-center hidden group-hover:flex transition-all"
+        >
+          <div
+            class="font-semibold text-2xl shadow p-2 border border-amber-500 rounded-lg bg-amber-800 text-white"
+          >
+            Generate your own History
+          </div>
+        </div>
+      </a>
+    </div>
+    <h1 class="text-center font-semibold text-5xl my-2 font-qwitcher-grypen bg-clip-text bg-gradient-to-t from-red-500 to-red-800 text-transparent">
+      Check some Vampire History
+    </h1>
+    <div class="grid grid-cols-4 gap-4">
+      {
+        imagesWithUrl.map((image: any) => (
+          <HorrorImage rotation={false} direction="right" data={image} />
+          // <div>
+          //   <img src={image.url} alt={image.username + " Vampire"} class="w-full" />
+          // </div>
+        ))
+      }
+    </div>
+
+    <VampireSection />
+  </main>
 </Layout>
